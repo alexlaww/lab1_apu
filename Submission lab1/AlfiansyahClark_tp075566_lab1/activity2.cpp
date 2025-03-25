@@ -49,7 +49,7 @@ int main(){
             cout << "\nFalse";
         }
         
-        
+        */
         //4
         int num1, num2;
         cout << "Enter First Number: ";
@@ -63,7 +63,7 @@ int main(){
             cout <<"False";
         }
         
-        */
+        /*
         //5
         int speed;
         bool ticket;
@@ -78,7 +78,7 @@ int main(){
             ticket = 0;
             cout << ticket;
         }
-        
+        */
     return 0;
 }
         
