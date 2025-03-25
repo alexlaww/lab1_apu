@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    cout << "Enter 3 scores (quiz, mid-term, and final) vales separated by space: " << endl;
+    int quiz, mid, final, total = 0, avg = 0;
+    cin >> quiz >> mid >> final;
+
+    total = quiz + mid + final;
+    avg = total / 3;
+
+    if (avg >= 90) {
+        cout << "Grade: A" << endl;
+    }
+
+    else if (avg >= 70 && avg < 90) {
+        cout << "Grade: B" << endl;
+    }
+
+    else if (avg >= 50 && avg < 70) {
+        cout << "Grade: C" << endl;
+    }
+    else{
+        cout << "Grade: F" << endl;
+    }
+
+    cout << "Total score: " << total << endl;
+}
