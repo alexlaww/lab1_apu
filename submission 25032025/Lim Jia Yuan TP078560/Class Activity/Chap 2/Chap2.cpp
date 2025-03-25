@@ -181,23 +181,23 @@ using namespace std;
 // }
 
 //Class Activity 4:
-// int main() 
+// int main()
 // {
 //     string input;
-//     int uppercaseCount = 0;
+//     int count = 0;
 
-//     cout << "Enter a string: ";
+//     cout << "Enter a String: ";
 //     getline(cin, input); 
 
-//     for (int i = 0; i < input.length(); i++) 
+//     for (int i = 0; i < input.length(); i++)
 //     {
-//         if (isupper(input[i]))
+//         if (input[i] >= 'A' && input[i] <= 'Z')
 //         {
-//             uppercaseCount++;
+//             count++;
 //         }
 //     }
 
-//     cout << "The number of uppercase letters is " << uppercaseCount << endl;
+//     cout << "The number of uppercase letters is " << count << endl;
 
 //     return 0;
 // }
