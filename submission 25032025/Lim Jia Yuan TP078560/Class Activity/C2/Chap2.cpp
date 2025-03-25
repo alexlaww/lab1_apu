@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//E2
+//Exercise:
 // const int NUMBER = 12;
 
 // int main()
