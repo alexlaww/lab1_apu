@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double rate, dollars;
+
+    cout << "Enter the exchange rate from dollars to RMB: ";
+    cin >> rate;
+
+    cout << "Enter 0 to convert dollars to RMB and 1 vice versa: ";
+    int choice;
+    cin >> choice;
+
+    if (choice == 0)
+    {
+        cout << "Enter the amount of dollars: ";
+        cin >> dollars;
+        
+        double rmb = dollars * rate;
+        cout << "Equivalent amount in RMB: " << rmb << endl;
+    }
+    else
+    {
+        cout << "Enter the amount of RMB: ";
+        cin >> dollars;
+        
+        double usd = dollars / rate;
+        cout << "Equivalent amount in USD: " << usd << endl;
+    }
+    
+    
+}
