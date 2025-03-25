@@ -1,0 +1,63 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    // For Loop
+    string input;
+    int count;
+
+    cout << "Enter a String: ";
+    getline(cin, input); //considers whitespace
+
+    count = 0;
+
+    for (int i = 0; i < input.length(); i++)
+    {
+        if (input[i] >= 'A' && input[i] <= 'Z') //without using upper
+        {
+            count++;
+        }
+    }
+
+    cout << "The number of uppercase letters is " << count << endl; 
+
+
+    // Array 1
+    int billy[]= {16, 2, 77, 40, 12071, 51};
+
+    int sum, max, min;
+
+    for (int i = 0; i < 6; i++)
+    {
+        sum += billy[i];
+
+        if (billy[i] > max)
+        {
+            max = billy[i];
+        }
+
+        if (billy[i] < min)
+        {
+            min = billy[i];
+        }
+    }
+
+    cout << "The sum is " << sum << endl;
+    cout << "The max is " << max << endl;
+    cout << "The min is " << min << endl;
+
+    // Array 2
+    int num[4];
+    int calc;
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "Enter a number " << i + 1 << ":";
+        cin >> num[i];
+        calc += num[i];
+    }
+    cout << num[0] << " + " << num[1] << " + " << num[2] << " + " << num[3] << " + " << num[4] << " = " << calc << endl;
+
+}
