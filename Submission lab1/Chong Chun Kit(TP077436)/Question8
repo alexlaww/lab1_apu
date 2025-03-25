@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double mealCost, tipPercentage, gst, totalAfterGST, totalAfterTip;
+
+    // User inputs
+    cout << "Enter the cost of the meal (before GST and tipping): RM ";
+    cin >> mealCost;
+    
+    cout << "Enter the tip percentage: ";
+    cin >> tipPercentage;
+
+    // Calculate GST (6% of meal cost)
+    gst = mealCost * 0.06;
+    
+    // Calculate total after GST
+    totalAfterGST = mealCost + gst;
+    
+    // Calculate tip amount
+    double tipAmount = (tipPercentage / 100) * totalAfterGST;
+    
+    // Calculate total cost after GST and tipping
+    totalAfterTip = totalAfterGST + tipAmount;
+
+    // Display results
+    cout << "\nTotal cost BEFORE GST and tipping: RM " << mealCost << endl;
+    cout << "Total cost AFTER GST (6% applied): RM " << totalAfterGST << endl;
+    cout << "Total cost AFTER GST and tipping: RM " << totalAfterTip << endl;
+
+    return 0;
+}
