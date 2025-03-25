@@ -42,20 +42,20 @@ int main(){
 
     // Table Headers
     cout << "| " << setw(19) << left << "Name"  // Adjusted width: 20 - 1 (for | space)
-        << "| " << setw(5)  << "Age"   
-        << "| " << setw(9)  << "Gender"  
-        << "| " << setw(19) << "Address"  
-        << "| " << setw(18) << "E-wallet Amount"
+        << "| " << setw(5)  << left << "Age"   
+        << "| " << setw(9)  << left << "Gender"  
+        << "| " << setw(19) << left << "Address"  
+        << "| " << setw(18) << left << "E-wallet Amount"
         << " |" << endl;
 
     printLine();
 
     // Table Data
     cout << "| " << setw(19) << left << student.name
-        << "| " << setw(5)  << student.age
-        << "| " << setw(9)  << student.gender
-        << "| " << setw(19) << student.address
-        << "| RM " << setw(15) << student.amount
+        << "| " << setw(5)  << left << student.age
+        << "| " << setw(9)  << left << student.gender
+        << "| " << setw(19) << left << student.address
+        << "| RM " << setw(15) << left << student.amount
         << " |" << endl;
 
     printLine();
