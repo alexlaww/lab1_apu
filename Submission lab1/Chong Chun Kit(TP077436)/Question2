@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+int getDaysInMonth(int year, int month) {
+    if (month == 2) { // February check for leap year
+        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
+    }
+    return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+}
+
+int main() {
+    int year, month, days;
+    char weather;
+    int hotDays = 0, rainyDays = 0, cloudyDays = 0;
+
+    // Get user input for year and month
+    cout << "Enter Your Month (e.g., 8 for August): ";
+    cin >> month;
+    cout << "Enter Year: ";
+    cin >> year;
+
+    // Validate month input
+    if (month < 1 || month > 12) {
+        cout << "Invalid month! Please enter a number between 1 and 12.\n";
+        return 1;
+    }
+
+    days = getDaysInMonth(year, month);
+
+    // Loop through each day to get weather input
+    for (int day = 1; day <= days; day++) {
+        cout << "Day " << day << " : Enter 'H' for Hot, 'R' for Rainy, 'C' for Cloudy, ('E' to end): ";
+        cin >> weather;
+
+        if (weather == 'E' || weather == 'e') break; // Exit if 'E' is entered
+
+        // Count weather types
+        if (weather == 'H' || weather == 'h') {
+            hotDays++;
+        } else if (weather == 'R' || weather == 'r') {
+            rainyDays++;
+        } else if (weather == 'C' || weather == 'c') {
+            cloudyDays++;
+        } else {
+            cout << "Invalid input! Please enter H, R, or C.\n";
+            day--; // Retry the same day
+        }
+    }
+
+    // Display the results
+    cout << "\nNumber of hot days this month: " << hotDays << endl;
+    cout << "Number of rainy days this month: " << rainyDays << endl;
+    cout << "Number of cloudy days this month: " << cloudyDays << endl;
+
+    return 0;
+}
