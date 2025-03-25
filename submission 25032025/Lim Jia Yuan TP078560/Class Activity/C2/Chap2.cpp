@@ -1,4 +1,6 @@
 #include<iostream>
+#include <string> 
+#include <cctype>  
 
 using namespace std;
 
@@ -138,15 +140,110 @@ using namespace std;
 // }
 
 //Class Activity 2: Q5 - method 2
-int main(){
+// int main()
+// {
 
-    int x,y;
+//     int x,y;
     
-    cout << "Enter value 1:";
-    cin >> x;
-    cout << "Enter value 2:";
-    cin >> y;
-    //if-statement 
-    // before "?", statement     after "?", if statement is true( : -> left) ,if statement is false (: -> right) 
-    cout << ( (x>0) && (y>0) ) ? "True\n" : "False" ;   
+//     cout << "Enter value 1:";
+//     cin >> x;
+//     cout << "Enter value 2:";
+//     cin >> y;
+//     //if-statement 
+//     // before "?", statement     after "?", if statement is true( : -> left) ,if statement is false (: -> right) 
+//     cout << ( (x>0) && (y>0) ) ? "True\n" : "False" ;   
+// }
+
+//Class Activity 3(i): for loop
+// int main() 
+// {
+//     for (int number2 = 100; number2 > 10; number2 = number2 - 5) 
+//     {
+//         cout << number2 << endl;
+//     }
+
+//     return 0;
+// }
+
+//Class Activity 3(i): do while loop
+// int main() 
+// {
+//     int number3 = 100;
+
+//     do 
+//     {
+//         cout << number3 << endl;
+//         number3 = number3 - 5;
+//     } 
+//     while (number3 > 10);
+
+//     return 0;
+// }
+
+//Class Activity 4:
+// int main() 
+// {
+//     string input;
+//     int uppercaseCount = 0;
+
+//     cout << "Enter a string: ";
+//     getline(cin, input); 
+
+//     for (int i = 0; i < input.length(); i++) 
+//     {
+//         if (isupper(input[i]))
+//         {
+//             uppercaseCount++;
+//         }
+//     }
+
+//     cout << "The number of uppercase letters is " << uppercaseCount << endl;
+
+//     return 0;
+// }
+
+//Class Activity 5:
+bool isPrime(int number) 
+{
+    if (number < 2) return false;
+
+    for (int i = 2; i * i <= number; i++) 
+    {
+        if (number % i == 0)
+            return false;
+    }
+
+    return true;
+}
+
+void printPrimes(int start, int end)
+{
+    cout << "\nPrime Numbers between " << start << " to " << end << "\n";
+    cout << "======================================================================================================================================================\n";
+
+    for (int i = start; i <= end; i++) 
+    {
+        if (isPrime(i)) 
+        {
+            cout << i << "\t";
+        }
+    }
+    cout << "\n";
+
+    cout << "======================================================================================================================================================\n";
+}
+
+int main()
+{
+    int startValue, endValue;
+
+    cout << "Start value: ";
+    cin >> startValue;
+
+    cout << "End value: ";
+    cin >> endValue;
+
+    printPrimes(startValue, endValue);
+
+    return 0;
 }
