@@ -1,0 +1,78 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+
+using namespace std;
+
+int getDaysInMonth(int year, int month) {
+    if (month == 2) { // February check for leap year
+        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
+    }
+    return (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31;
+}
+
+// Function to determine the starting day of the month (0 = Sunday, 6 = Saturday)
+int getStartDay(int year, int month) {
+    tm timeStruct = {};
+    timeStruct.tm_year = year - 1900; // tm_year is years since 1900
+    timeStruct.tm_mon = month - 1;    // tm_mon is 0-based (January = 0)
+    timeStruct.tm_mday = 1;           // Set the day to 1st
+    mktime(&timeStruct);
+    return timeStruct.tm_wday; // Return weekday (0 = Sunday, ..., 6 = Saturday)
+}
+
+// Function to get the month name
+string getMonthName(int month) {
+    string months[] = { "January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December" };
+    return months[month - 1]; 
+}
+
+void printCalendar(int year, int month) {
+    int startDay = getStartDay(year, month);
+    int daysInMonth = getDaysInMonth(year, month);
+
+    cout << "\n\t  Calendar Title : " << getMonthName(month) << " - " << year << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << "  Sunday  Monday  Tuesday  Wednesday  Thursday  Friday  Saturday\n";
+    cout << "----------------------------------------------------------\n";
+
+    // Print leading spaces for the first week
+    for (int i = 0; i < startDay; i++) {
+        cout << setw(8) << " ";
+    }
+
+    // Print the days of the month
+    for (int day = 1; day <= daysInMonth; day++) {
+        cout << setw(8) << day;
+        if ((startDay + day) % 7 == 0) { // Newline after Saturday
+            cout << endl;
+        }
+    }
+    cout << "\n----------------------------------------------------------\n";
+}
+
+int main() {
+    int year, month, choice;
+
+    do {
+        cout << "Enter calendar's year: ";
+        cin >> year;
+        cout << "Enter calendar's month (1-12): ";
+        cin >> month;
+
+        if (month < 1 || month > 12) {
+            cout << "Invalid month! Please enter a number between 1 and 12.\n";
+            continue;
+        }
+
+        printCalendar(year, month);
+
+        cout << "Do you want to see another month? (1 = Yes, 0 = No): ";
+        cin >> choice;
+
+    } while (choice == 1);
+
+    cout << "Program exited.\n";
+    return 0;
+}
