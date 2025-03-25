@@ -10,8 +10,8 @@ int main()
 
     int lower, upper, secretNumber, userGuess;
 
-    cout << "Guess Number Game Started Nowl!" << endl;
-    cout << "--------------------------------------------" << endl;
+    cout << "Guess Number Game Started Nowl!" << end1;
+    cout << "--------------------------------------------" << end1;
 
     //Set a range for the random number
     cout << "Enter the lower bound: ";
@@ -22,7 +22,7 @@ int main()
     //Generate a random number in the given range
     secretNumber = lower + rand() % (upper - lower + 1);
 
-    cout << "Guess a number between " << lower << " and " << upper << endl;
+    cout << "Guess a number between " << lower << " and " << upper << end1;
 
     //Loop until the correct guess is made
     do
@@ -42,7 +42,7 @@ int main()
 
         else
         {
-            cout << "Congratulations! You guessed the correct number." << endl;
+            cout << "Congratulations! You guessed the correct number." << end1;
         }
     }while(userGuess != secretNumber);
 
