@@ -1,28 +1,35 @@
-int main() {
-//     int row, col;
-//     int matrix1[5][5], matrix2[5][5], sum[5][5];
+const int MAX_STUDENTS = 10;
 
-//     cout << "Enter the number of rows and columns of matrix (max 5): ";
-//     cin >> row >> col;
-
-//     cout << "Enter the elements of first matrix:\n";
-//     for (int i = 0; i < row; ++i)
-//         for (int j = 0; j < col; ++j)
-//             cin >> matrix1[i][j];
-
-//     cout << "Enter the elements of second matrix:\n";
-//     for (int i = 0; i < row; ++i)
-//         for (int j = 0; j < col; ++j)
-//             cin >> matrix2[i][j];
-
-//     cout << "Sum of entered matrices:\n";
-//     for (int i = 0; i < row; ++i) {
-//         for (int j = 0; j < col; ++j) {
-//             sum[i][j] = matrix1[i][j] + matrix2[i][j];
-//             cout << sum[i][j] << "\t";
-//         }
-//         cout << endl;
+// void displayMarks(string names[], int marks[], int count) {
+//     cout << "Displaying marks:\n";
+//     for (int i = 0; i < count; ++i) {
+//         cout << names[i] << ": " << marks[i] << endl;
 //     }
+// }
+
+// int main() 
+// {
+//     int n;
+//     string names[MAX_STUDENTS];
+//     int marks[MAX_STUDENTS];
+
+//     cout << "Enter number of students (max 10): ";
+//     cin >> n;
+
+//     cin.ignore(); // to clear newline before getline
+
+//     for (int i = 0; i < n; ++i) 
+//     {
+//         cout << "Enter name for student " << i + 1 << ": ";
+//         getline(cin, names[i]);
+
+//         cout << "Enter mark for " << names[i] << ": ";
+//         cin >> marks[i];
+//         cin.ignore(); // prepare for next input
+//     }
+
+//     cout << endl;
+//     displayMarks(names, marks, n);
 
 //     return 0;
 // }
