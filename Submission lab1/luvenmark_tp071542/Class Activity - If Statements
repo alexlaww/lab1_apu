@@ -1,0 +1,99 @@
+#include<iostream> //header for input and output
+
+using namespace std; // standard namespace, to not use std:: on every line
+
+const int NUMBER = 12;
+
+int main()
+{
+    // EXAMPLE 1
+    // int, double, float, string, boolean, char
+    int firstNum;
+    int secondNum;
+    
+    firstNum = 18;
+    cout << "Line 9: firstnum = " << firstNum << endl; // c-out = object, used with << pipe
+
+    cout << "Line 10: Enter an integer: ";
+    cin >> secondNum;
+    cout << endl;
+
+    cout << "Line 13: secondNum = " << secondNum << endl;
+
+    firstNum = firstNum + NUMBER + 2 * secondNum;
+
+    cout << "Line 15: The new value of " << "firstNum = " << firstNum << endl;
+    
+    return 0;
+    
+    // ACTIVITY 1
+    int feet, inches;
+    double centimeters;
+
+    cout << "Enter length in feet: ";
+    cin >> feet;
+    cout << "Enter additional inches: ";
+    cin >> inches;
+
+    int totalInches = (feet * 12) + inches;
+    centimeters = totalInches * 2.54;
+
+    cout << "Length in centimeters: " << centimeters << " cm" << endl;
+
+    //Q1
+    int x, y;
+
+    cout << "Enter an integer: ";
+    cin >> y;
+
+    if (y > 0)
+    {
+        x = 1;
+        cout << "Integer is:" << x << endl;
+    }
+
+    //Q2
+    double score;
+
+    cout << "Enter a score: ";
+    cin >> score;
+
+    if (score >= 80 && score <= 90)
+    {
+        score += 5;
+    }
+    cout << "Score is: " << score << endl;
+
+    //Q3
+    int z;
+
+    cout << "Enter integer z: ";
+    cin >> z;
+
+    if (z % 2 != 0 && z > 0)
+    {
+        cout << x << " is true." << endl;
+    }
+
+    //Q4
+    int a, b;
+
+    cout << "Enter integer a: ";
+    cin >> a;
+    cout << "Enter integer b: ";
+    cin >> b;
+
+    if (a > 0 && b > 0)
+    {
+        cout << a << " and " << b << " is true." << endl;
+    }
+
+    //Q5
+    int ticket, speed;
+
+    cout << "Enter a speed: ";
+    cin >> speed;
+
+    ticket = (speed > 55) ? 1 : 0;
+    cout << "Ticket :" << ticket << endl;
+}
