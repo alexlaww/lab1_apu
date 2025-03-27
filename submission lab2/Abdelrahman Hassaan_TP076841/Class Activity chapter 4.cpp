@@ -3,9 +3,6 @@
 #include <string>  // For string handling
 
 using namespace std;
-#include <iostream>
-#include <string>
-using namespace std;
 
 struct Employee {
     string name;
