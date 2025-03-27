@@ -1,4 +1,4 @@
-// LAB1 PART A Q1
+// Lab1 PART A Q1
 // #include<iostream>
 // #include<string>
 // using namespace std;
@@ -79,7 +79,7 @@
 
 // using namespace std;
 
-// Function to valid the time range
+// // Function to valid the time range
 // bool ValidTime(int hours, int minutes, int seconds){
 //     return (hours >= 0 && hours < 24) && (minutes >= 0 && minutes < 60) && (seconds >= 0 && seconds < 60);
 // }
@@ -104,6 +104,13 @@
     
 //     return 0;
 // }
+
+// Lab1 PART B Q2
+// #include<iostream>
+// #include<sstream>
+// #include<iomanip>
+
+// using namespace std;
 
 // int main(){
 //     srand(time(0)); 
@@ -219,7 +226,7 @@
 //     int daysInMonth, hotDays = 0, rainyDays = 0, cloudyDays = 0;
 //     string weather;
 
-//     cout << "Enter Your Month (e.g. Augusst 2019): ";
+//     cout << "Enter a amount of day: ";
 //     cin >> daysInMonth;
 
 //     for (int day = 1; day <= daysInMonth; day++) {
