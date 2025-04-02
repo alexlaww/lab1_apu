@@ -198,4 +198,43 @@ using namespace std;
 
 
 
-//Part C: Q2
+// //Part C: Q2
+// int main() {
+//     string month;
+//     char weather;
+//     int days;
+//     int hotDays = 0, rainyDays = 0, cloudyDays = 0;
+
+//     cout << "Enter Your Month (e.g. August 2019): ";
+//     getline(cin, month);
+    
+//     cout << "Enter the number of days in " << month << ": ";
+//     cin >> days;
+    
+//     for (int i = 1; i <= days; i++) {
+//         cout << "Day " << i << " : Enter \"H\" for Hot, \"R\" for Rainy, \"C\" for Cloudy, (\"E\" to end): ";
+//         cin >> weather;
+        
+//         if (weather == 'H' || weather == 'h') {
+//             hotDays++;
+//         } else if (weather == 'R' || weather == 'r') {
+//             rainyDays++;
+//         } else if (weather == 'C' || weather == 'c') {
+//             cloudyDays++;
+//         } else if (weather == 'E' || weather == 'e') {
+//             break;
+//         } else {
+//             cout << "Invalid input. Please enter H, R, or C." << endl;
+//             i--; // Repeat the current day's input
+//         }
+//     }
+    
+//     cout << "\nNumber of hot days this month: " << hotDays << endl;
+//     cout << "Number of rainy days this month: " << rainyDays << endl;
+//     cout << "Number of cloudy days this month: " << cloudyDays << endl;
+    
+//     return 0;
+// }
+
+
+
