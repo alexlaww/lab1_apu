@@ -1,0 +1,228 @@
+#include <iostream>
+#include <iomanip> //for setw()
+
+using namespace std;
+
+int main()
+{
+    //C1 !!
+    int year, month;
+    cout << "Enter calendar's year: ";
+    cin >> year;
+    cout << "Enter calendar's month: ";
+    cin >> month;
+
+    int daysInMonth;
+    if (month == 2) 
+    {
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+        {
+            daysInMonth = 29;
+        } else 
+        {
+            daysInMonth = 28;
+        }
+    } else if (month == 4 || month == 6 || month == 9 || month == 11) 
+    {
+        daysInMonth = 30;
+    } else 
+    {
+        daysInMonth = 31;
+    }
+
+    int day = 1;
+    int startingDay = (year - 1) * 365 + (year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400;
+    for (int m = 1; m < month; m++) {
+        if (m == 2) {
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) 
+            {
+                startingDay += 29;
+            } else {
+                startingDay += 28;
+            }
+        } else if (m == 4 || m == 6 || m == 9 || m == 11) 
+        {
+            startingDay += 30;
+        } else {
+            startingDay += 31;
+        }
+    }
+    startingDay = (startingDay + 1) % 7;
+
+    cout << "\n      Calendar Title : " 
+         << (month == 1 ? "January" : month == 2 ? "February" : month == 3 ? "March" :
+            month == 4 ? "April" : month == 5 ? "May" : month == 6 ? "June" :
+            month == 7 ? "July" : month == 8 ? "August" : month == 9 ? "September" :
+            month == 10 ? "October" : month == 11 ? "November" : "December")
+         << " - " << year << "\n";
+    
+    cout << "---------------------------------------------\n";
+    cout << " Sunday  Monday  Tuesday  Wednesday  Thursday  Friday  Saturday\n";
+    cout << "---------------------------------------------\n";
+
+    for (int i = 0; i < startingDay; i++) 
+    {
+        cout << "      ";
+    }
+
+    for (int day = 1; day <= daysInMonth; day++) 
+    {
+        cout << setw(6) << day;
+        if ((day + startingDay) % 7 == 0) 
+        {
+            cout << "\n";
+        }
+    }
+    cout << "\n---------------------------------------------\n";
+
+    //C2
+    int hot = 0, rainy = 0, cloudy = 0;
+    char weather;
+
+    for (int i = 1; i <= 28; i++) 
+    {
+        cout << "Day " << i << ": Enter 'H' for Hot, 'R' for Rainy, 'C' for Cloudy: ";
+        cin >> weather;
+
+        if (weather == 'H' || weather == 'h') hot++;
+        else if (weather == 'R' || weather == 'r') rainy++;
+        else if (weather == 'C' || weather == 'c') cloudy++;
+    }
+
+    cout << "\nNumber of hot days: " << hot << endl;
+    cout << "Number of rainy days: " << rainy << endl;
+    cout << "Number of cloudy days: " << cloudy << endl;
+
+    //C3
+    float rate, amount;
+    int choice;
+
+    cout << "Enter the exchange rate from dollars to RMB: ";
+    cin >> rate;
+    cout << "Enter 0 to convert dollars to RMB and 1 vice versa: ";
+    cin >> choice;
+
+    if (choice == 0) 
+    {
+        cout << "Enter the dollar amount: ";
+        cin >> amount;
+        cout << "$" << amount << " is " << amount * rate << " yuan\n";
+    } else {
+        cout << "Enter the RMB amount: ";
+        cin >> amount;
+        cout << amount << " yuan is $" << amount / rate << endl;
+    }
+
+    //C4 !!
+    int n;
+    cout << "Enter number of rows (for diamond (triange) dimension) : ";
+    cin >> n;
+
+    for (int i = 1; i <= n; i++) 
+    {
+        for (int j = n - i; j > 0; j--) 
+        {
+            cout << " "; // to align to middle
+        }
+        for (int j = 0; j < 2 * i - 1; j++) 
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    for (int i = n - 1; i > 0; i--) 
+    {
+        for (int j = n - i; j > 0; j--) 
+        {
+            cout << " ";
+        }
+        for (int j = 0; j < 2 * i - 1; j++) 
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    //C5
+    for (int i = 2; i <= 50; i += 2) 
+    {
+        cout << i << " ";
+        if (i % 10 == 0) 
+        {
+            cout << endl;
+        }
+    }
+
+    //C6
+    float quiz, mid, finals;
+    cout << "Enter 3 scores (quiz, midterm, and final) values seperated by space: ";
+    cin >> quiz >> mid >> finals; //can do them together, either newline or space
+
+    float avg = (quiz + mid + finals) / 3;
+
+    if (avg >= 90) 
+    {
+        cout << "Grade A";
+    }
+    else if (avg >= 70)
+    {   
+        cout << "Grade B";
+    }
+    else if (avg >= 50) 
+    {
+        cout << "Grade C";
+    }
+    else 
+    {
+        cout << "Grade F";
+    }
+
+    cout << "Press any key to continue . . .";
+    cin.ignore(); // handle leftover newline
+    cin.get(); // wait for user to press a key
+
+    //C7
+    int w1, h1, w2, h2;
+    cout << "\nRectangle A: ";
+    cout << "Width = ";
+    cin >> w1;
+    cout << "Height = ";
+    cin >> h1;
+
+    cout << "\nRectangle B: ";
+    cout << "Width = ";
+    cin >> w2;
+    cout << "Height = ";
+    cin >> h2;
+
+    int area1 = w1 * h1, area2 = w2 * h2;
+
+    if (area1 > area2)
+    {
+        cout << "Area in rectangle A is bigger than rectangle B.\n"; 
+    }
+    else if (area2 > area1) 
+    {
+        cout << "Area in rectangle B is bigger than rectangle A.\n";
+    }
+    else 
+    {
+        cout << "Both rectangles are equal.\n";
+    }
+
+    //C8
+    float cost, tip, gst, total;
+
+    cout << "Enter the cost of the meal: ";
+    cin >> cost;
+    cout << "Enter tip percentage: ";
+    cin >> tip;
+
+    gst = cost * 0.06;
+    total = cost + gst + (cost * tip / 100);
+
+    cout << "Total cost BEFORE GST and tipping: $" << cost << endl;
+    cout << "Total cost AFTER GST: $" << cost + gst << endl;
+    cout << "Total cost AFTER GST and tipping: $" << total << endl;
+}
