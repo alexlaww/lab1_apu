@@ -1,16 +1,14 @@
 #include <iostream>
-#include <iomanip> // 用于格式化输出
+#include <iomanip> 
 using namespace std;
 
 int main() {
-    // 定义变量
     string name = "Mien May";
     string gender = "Female";
     int age = 23;
     string address = "Selangor";
     double ewallet = 23.12;
 
-    // 输出学生信息
     cout << "Student Name       : " << name << endl;
     cout << "Student Gender     : " << gender << endl;
     cout << "Student Age        : " << age << endl;
