@@ -53,11 +53,10 @@ int main() {
         cin >> weather;
         weather = toupper(weather); // Normalize input to uppercase
         if (weather == 'H') {
-        if (weather == 'H' || weather == 'h') {
+            hot++;
         } else if (weather == 'R') {
-        } else if (weather == 'R' || weather == 'r') {
+            rainy++;
         } else if (weather == 'C') {
-        } else if (weather == 'C' || weather == 'c') {
             cloudy++;
         } else {
             cout << "Invalid input. Please enter 'H', 'R', or 'C'." << endl;

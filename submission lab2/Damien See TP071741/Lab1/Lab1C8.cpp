@@ -5,6 +5,7 @@ int main() {
     double mealCost, GSTRate = 0.06, tipPercentage, totalAfterGST, totalAfterTip;
 
     // Input meal cost and tip percentage
+    cout << "Current GST rate: 6% "<< endl;
     cout << "Enter the cost of the meal (before GST and tipping): ";
     cin >> mealCost;
     cout << "Enter the tip percentage: ";

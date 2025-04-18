@@ -28,7 +28,7 @@ int main() {
 
         convertedAmount = amount * exchangeRate;
         cout << fixed << setprecision(2);
-        cout << "$" << amount << " is " << convertedAmount << " yuan" << endl;
+        cout << "$" << amount << " is " << convertedAmount << " RM" << endl;
     } else if (choice == 1) {
         cout << "Enter the RMB amount: ";
         cin >> amount;
@@ -40,7 +40,7 @@ int main() {
 
         convertedAmount = amount / exchangeRate;
         cout << fixed << setprecision(2);
-        cout << amount << " yuan is $" << convertedAmount << endl;
+        cout << amount << " RM is $" << convertedAmount << endl;
     } else {
         cout << "Invalid choice! Please enter 0 or 1." << endl;
         return 1;

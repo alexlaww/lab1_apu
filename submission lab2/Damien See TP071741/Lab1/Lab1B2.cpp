@@ -11,7 +11,7 @@ int main() {
     int lives = 3;
 
     cout << "Guess a number" << endl;
-    cout << "Ender the lower bound: ";
+    cout << "Enter the lower bound: ";
     cin >> lowerBound;
     cout << "Enter the upper bound: ";
     cin >> upperBound;
