@@ -27,7 +27,7 @@ void playGame(int min, int max) {
 }
 
 int main() {
-    int min = 1, max = 100;
+    int min = 1, max = 5;
     playGame(min, max);
     return 0;
 }
