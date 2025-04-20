@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(0)); // Random seed
+    int lower = 1, upper = 22; // Change to any range if needed
+    int secret = rand() % (upper - lower + 1) + lower;
+    int guess;
+
+    cout << "Guess Number Game Started Now!" << endl;
+    cout << "Guess number between " << lower << " to " << upper << endl;
+
+    do {
+        cout << "Your answer: ";
+        cin >> guess;
+
+        if (guess < secret)
+            cout << "Too low!" << endl;
+        else if (guess > secret)
+            cout << "Too high!" << endl;
+        else
+            cout << "Congratulations! You won!" << endl;
+
+    } while (guess != secret);
+
+    return 0;
+}
