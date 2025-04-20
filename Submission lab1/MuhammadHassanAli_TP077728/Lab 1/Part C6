@@ -1,0 +1,33 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    float quiz, midterm, finalExam, average;
+
+    // Take inputs
+    cout << "Enter quiz score (%): ";
+    cin >> quiz;
+    cout << "Enter mid-term score (%): ";
+    cin >> midterm;
+    cout << "Enter final exam score (%): ";
+    cin >> finalExam;
+
+    // Calculate average
+    average = (quiz + midterm + finalExam) / 3;
+
+    cout << fixed << setprecision(2);
+    cout << "\nAverage score = " << average << "%" << endl;
+
+    // Grade classification
+    if (average >= 90)
+        cout << "Grade = A" << endl;
+    else if (average >= 70)
+        cout << "Grade = B" << endl;
+    else if (average >= 50)
+        cout << "Grade = C" << endl;
+    else
+        cout << "Grade = F" << endl;
+
+    return 0;
+}

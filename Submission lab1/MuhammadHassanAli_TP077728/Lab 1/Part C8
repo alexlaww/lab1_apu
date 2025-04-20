@@ -1,0 +1,24 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double mealCost, tipPercent, gst, tipAmount, totalWithGST, finalTotal;
+
+    cout << "Enter the cost of the meal (before GST and tipping): ";
+    cin >> mealCost;
+    cout << "Enter tip percentage: ";
+    cin >> tipPercent;
+
+    gst = mealCost * 0.06; // 6% GST
+    totalWithGST = mealCost + gst;
+    tipAmount = totalWithGST * (tipPercent / 100.0);
+    finalTotal = totalWithGST + tipAmount;
+
+    cout << fixed << setprecision(2);
+    cout << "\nThe total cost of the meal BEFORE GST and tipping: RM" << mealCost << endl;
+    cout << "The total cost of the meal AFTER GST: RM" << totalWithGST << endl;
+    cout << "The total cost of the meal AFTER GST and tipping: RM" << finalTotal << endl;
+
+    return 0;
+}
