@@ -1,10 +1,33 @@
 #include<iostream>
 using namespace std;
 
-// unfinished
 int ConvertLetterString(string month) {
     if (month == "January") {
         return 1;
+    } else if (month == "February") {
+        return 2;
+    } else if (month == "March") {
+        return 3;
+    } else if (month == "April") {
+        return 4;
+    } else if (month == "May") {
+        return 5;
+    } else if (month == "June") {
+        return 6;
+    } else if (month == "July") {
+        return 7;
+    } else if (month == "August") {
+        return 8;
+    } else if (month == "September") {
+        return 9;
+    } else if (month == "October") {
+        return 10;
+    } else if (month == "November") {
+        return 11;
+    } else if (month == "December") {
+        return 12;
+    } else {
+        return -1;
     }
 
 }
@@ -21,38 +44,52 @@ int FindDaysInMonth(int month, int year) {
     else if (month == 4 || month == 6 || month == 9 || month == 11) {
         return 30;
     }
+    else {
+        return 31;
+    }
 }
 
 int main() {
     char weather;
-    int hot, rainy, cloudy = 0;
+    int hot = 0, rainy = 0, cloudy = 0;
     string month;
     int year;
 
-    for (int i = 0; i < 28; i++) {
+    cout << "Enter the month: ";
+    cin >> month;
+    cout << "Enter the year: ";
+    cin >> year;
+
+    int monthNumber = ConvertLetterString(month);
+    if (monthNumber == -1) {
+        cout << "Invalid month entered." << endl;
+        return 1; 
+    }
+
+    int daysInMonth = FindDaysInMonth(monthNumber, year);
+
+    for (int i = 0; i < daysInMonth; i++) {
         cout << "Day " << (i + 1) << ": Enter \"H\" for Hot, \"R\" for Rainy, \"C\" for Cloudy, (E to end): ";
         cin >> weather;
         if (weather == 'H') {
-            hot += 1;
-        }
-        else if (weather == 'R') {
-            rainy += 1;
-        }
-        else if (weather == 'C') {
-            cloudy += 1;
-        }
-        else if (weather == 'E') {
-            break;
-        }
-        else {
-            cout << "Wrong input. Please try again" << endl;
-            i--;
+            hot++;
+        } else if (weather == 'R') {
+            rainy++;
+        } else if (weather == 'C') {
+            cloudy++;
+        } else if (weather == 'E') {
+            break; 
+        } else {
+            cout << "Wrong input. Please try again." << endl;
+            i--; 
         }
     }
+    
     cout << "Number of hot days this month: " << hot << endl;
     cout << "Number of rainy days this month: " << rainy << endl;
     cout << "Number of cloudy days this month: " << cloudy << endl;
 
     cout << "Press any key to continue...";
-    return 0;
+    cin.ignore(); 
+    cin.get(); 
 }
