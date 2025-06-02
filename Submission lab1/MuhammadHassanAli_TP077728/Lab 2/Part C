@@ -1,0 +1,120 @@
+// ==================== PART C – QUESTION 1 ====================
+
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+bool validateTimeFormat(string time, int &h, int &m, int &s) {
+    char c1, c2;
+    stringstream ss(time);
+    if ((ss >> h >> c1 >> m >> c2 >> s) && c1 == ':' && c2 == ':') {
+        if (h >= 0 && h <= 23 && m >= 0 && m <= 59 && s >= 0 && s <= 59)
+            return true;
+    }
+    return false;
+}
+
+int calculateSeconds(int h, int m, int s) {
+    return h * 3600 + m * 60 + s;
+}
+
+int main() {
+    string time;
+    int h, m, s;
+
+    cout << "Please enter your elapsed time (in HH:MM:SS format) = ";
+    cin >> time;
+
+    while (!validateTimeFormat(time, h, m, s)) {
+        cout << "Invalid input!" << endl;
+        cout << "Please enter your elapsed time (in HH:MM:SS format) = ";
+        cin >> time;
+    }
+
+    int totalSeconds = calculateSeconds(h, m, s);
+    cout << "Elapsed time in seconds = " << totalSeconds << " seconds" << endl;
+
+    return 0;
+}
+
+
+// ==================== PART C – QUESTION 2 ====================
+
+#include <iostream>
+using namespace std;
+
+int findDaysInMonth(int month, int year) {
+    if (month == 2) {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+            return 29;
+        else
+            return 28;
+    } else if (month == 4 || month == 6 || month == 9 || month == 11)
+        return 30;
+    else
+        return 31;
+}
+
+char convertLetter(char input) {
+    if (input == 'H' || input == 'h') return 'H';
+    if (input == 'R' || input == 'r') return 'R';
+    if (input == 'C' || input == 'c') return 'C';
+    return 'X'; // invalid
+}
+
+void displayReport(int hot, int rainy, int cloudy) {
+    cout << "\nNumber of hot days this month: " << hot << endl;
+    cout << "Number of rainy days this month: " << rainy << endl;
+    cout << "Number of cloudy days this month: " << cloudy << endl;
+
+    cout << "\nThe analysis star design as below:\n";
+    cout << "----------------------------------" << endl;
+    cout << "Hot    : "; for (int i = 0; i < hot; i++) cout << "*"; cout << endl;
+    cout << "Rainy  : "; for (int i = 0; i < rainy; i++) cout << "*"; cout << endl;
+    cout << "Cloudy : "; for (int i = 0; i < cloudy; i++) cout << "*"; cout << endl;
+    cout << "----------------------------------" << endl;
+}
+
+int main() {
+    int month, year;
+    cout << "Enter month (1-12): ";
+    cin >> month;
+    while (month < 1 || month > 12) {
+        cout << "Invalid month. Enter again (1-12): ";
+        cin >> month;
+    }
+
+    cout << "Enter year: ";
+    cin >> year;
+    while (year <= 0) {
+        cout << "Invalid year. Enter again: ";
+        cin >> year;
+    }
+
+    int totalDays = findDaysInMonth(month, year);
+
+    int hot = 0, rainy = 0, cloudy = 0;
+
+    for (int day = 1; day <= totalDays; day++) {
+        char input;
+        cout << "Day " << day << " : Enter 'H' for Hot, 'R' for Rainy, 'C' for Cloudy: ";
+        cin >> input;
+
+        input = convertLetter(input);
+
+        if (input == 'H') hot++;
+        else if (input == 'R') rainy++;
+        else if (input == 'C') cloudy++;
+        else {
+            cout << "Invalid input. Re-enter day " << day << "." << endl;
+            day--; // retry the same day
+        }
+    }
+
+    displayReport(hot, rainy, cloudy);
+
+    return 0;
+}
+
+
+

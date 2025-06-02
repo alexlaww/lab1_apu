@@ -3,40 +3,45 @@
 #include <string>  // For string handling
 
 using namespace std;
-int x;
-int y;
-int sum;
-void add();
-void add(){
-    cout << "Choose first Integer: " << endl;
-    cin >> x;
-    cout << "Choose the Second Integer:" << endl;
-    cin >> y;
-    sum = x + y;
-    cout << sum;
-}
-void add1(int a, int b);
-void add1(int a, int b){
-    cout << "Choose Two Integers: " << endl;
-    cin >> a >> b ;
-    cout << "Sum is " << (a + b)<< endl;
-}
-int add2();
-int add2(){
-    int a,b;
-    cout << "Choose two Integers: " << endl;
-    cin >> a >> b;
-    return (a + b);
-}
-int add3(int a, int b);
-int add3(int a, int b){
-    cout << "Choose Two Integers: " << endl;
-    cin >> a >> b;
-    return (a + b);
-}
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Employee {
+    string name;
+    int id;
+    string department;
+    double salary;
+    string jobTitle;
+};
+
 int main() {
-   add();
-   add1(3,5);
-   add2();
-   add3(4,7);
+    Employee emp;
+
+    cout << "Enter employee name: ";
+    getline(cin, emp.name);
+
+    cout << "Enter employee ID: ";
+    cin >> emp.id;
+    cin.ignore();  // To consume the newline character after entering ID
+
+    cout << "Enter employee department: ";
+    getline(cin, emp.department);
+
+    cout << "Enter employee salary: ";
+    cin >> emp.salary;
+    cin.ignore();
+
+    cout << "Enter employee job title: ";
+    getline(cin, emp.jobTitle);
+
+    cout << "\n--- Employee Data ---\n";
+    cout << "Name: " << emp.name << endl;
+    cout << "ID: " << emp.id << endl;
+    cout << "Department: " << emp.department << endl;
+    cout << "Salary: " << emp.salary << endl;
+    cout << "Job Title: " << emp.jobTitle << endl;
+
+    return 0;
 }
+

@@ -1,0 +1,171 @@
+// ==================== PART A – QUESTION 1 ====================
+
+#include <iostream>
+using namespace std;
+
+bool isDuplicate(int arr[], int count, int value) {
+    for (int i = 0; i < count; i++) {
+        if (arr[i] == value) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int main() {
+    const int SIZE = 10;
+    int numbers[SIZE];
+    int count = 0;
+
+    while (count < SIZE) {
+        int value;
+        cout << "Enter value " << (count + 1) << ": ";
+        cin >> value;
+
+        if (isDuplicate(numbers, count, value)) {
+            cout << "Value already in the list! Please choose other value!" << endl;
+        } else {
+            numbers[count] = value;
+            count++;
+        }
+    }
+
+    cout << "\nUnique values entered: ";
+    for (int i = 0; i < SIZE; i++) {
+        cout << numbers[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+
+// ==================== PART A – QUESTION 2 ====================
+
+
+#include <iostream>
+#include <chrono>
+using namespace std;
+using namespace std::chrono;
+
+// Linear search function
+bool linearSearch(int arr[], int size, int key) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == key)
+            return true;
+    }
+    return false;
+}
+
+// Binary search function
+bool binarySearch(int arr[], int size, int key) {
+    int left = 0, right = size - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (arr[mid] == key)
+            return true;
+        else if (arr[mid] < key)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return false;
+}
+
+// Simple bubble sort to sort the array for binary search
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++)
+        for (int j = 0; j < size - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(arr[j], arr[j + 1]);
+}
+
+int main() {
+    const int SIZE = 10;
+    int arr[SIZE] = {4, 5, 2, 6, 3, 8, 1, 7, 9, 10};
+    int key;
+
+    cout << "Enter a value to search: ";
+    cin >> key;
+
+    // --- Linear Search ---
+    auto startL = high_resolution_clock::now();
+    bool foundLinear = linearSearch(arr, SIZE, key);
+    auto stopL = high_resolution_clock::now();
+    auto durationL = duration_cast<microseconds>(stopL - startL);
+
+    cout << "Linear Search: ";
+    cout << (foundLinear ? "Found" : "Not Found");
+    cout << " | Time: " << durationL.count() << " microseconds" << endl;
+
+    // --- Binary Search ---
+    bubbleSort(arr, SIZE);  // Binary search requires sorted array
+
+    auto startB = high_resolution_clock::now();
+    bool foundBinary = binarySearch(arr, SIZE, key);
+    auto stopB = high_resolution_clock::now();
+    auto durationB = duration_cast<microseconds>(stopB - startB);
+
+    cout << "Binary Search: ";
+    cout << (foundBinary ? "Found" : "Not Found");
+    cout << " | Time: " << durationB.count() << " microseconds" << endl;
+
+    return 0;
+}
+
+
+// ==================== PART A – QUESTION 3 ====================
+
+#include <iostream>
+#include <chrono>
+using namespace std;
+using namespace std::chrono;
+
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++)
+        for (int j = 0; j < size - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(arr[j], arr[j + 1]);
+}
+
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key)
+            arr[j + 1] = arr[j--];
+        arr[j + 1] = key;
+    }
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) cout << arr[i] << " ";
+    cout << endl;
+}
+
+int main() {
+    int billy1[] = {4, 2, 1, 3, 5};
+    int billy2[] = {4, 2, 1, 3, 5};
+    int size = 5;
+
+    auto startBubble = high_resolution_clock::now();
+    bubbleSort(billy1, size);
+    auto stopBubble = high_resolution_clock::now();
+    auto durationBubble = duration_cast<microseconds>(stopBubble - startBubble);
+
+    cout << "Bubble Sort Result: ";
+    printArray(billy1, size);
+    cout << "Time: " << durationBubble.count() << " microseconds\n";
+
+    auto startInsertion = high_resolution_clock::now();
+    insertionSort(billy2, size);
+    auto stopInsertion = high_resolution_clock::now();
+    auto durationInsertion = duration_cast<microseconds>(stopInsertion - startInsertion);
+
+    cout << "Insertion Sort Result: ";
+    printArray(billy2, size);
+    cout << "Time: " << durationInsertion.count() << " microseconds\n";
+
+    return 0;
+}
+

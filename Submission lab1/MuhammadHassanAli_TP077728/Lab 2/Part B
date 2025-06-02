@@ -1,0 +1,190 @@
+// ==================== PART B – QUESTION 1 ====================
+
+#include <iostream>
+using namespace std;
+
+// Function to display numbers in reverse
+void reverseDisplayNumber(int start, int end) {
+    if (end < start)
+        return;
+    cout << end;
+    if (end > start)
+        cout << " + ";
+    reverseDisplayNumber(start, end - 1);
+}
+
+// Recursive function to calculate sum
+int reverseDisplayNumberAndSum(int start, int end) {
+    if (end < start)
+        return 0;
+    return end + reverseDisplayNumberAndSum(start, end - 1);
+}
+
+int main() {
+    int startvalue, endvalue;
+    
+    cout << "Enter a start value: ";
+    cin >> startvalue;
+
+    cout << "Enter an end value: ";
+    cin >> endvalue;
+
+    cout << endl;
+
+    // Display numbers in reverse
+    reverseDisplayNumber(startvalue, endvalue);
+    cout << endl;
+
+    // Display sum
+    int total = reverseDisplayNumberAndSum(startvalue, endvalue);
+    cout << "= " << total << endl;
+
+    return 0;
+}
+
+
+
+// ========================= PART B – QUESTION 2 ==========================
+
+#include <iostream>
+using namespace std;
+
+string reverseString(string text) {
+    string reversed = "";
+    for (int i = text.length() - 1; i >= 0; i--) {
+        reversed += text[i];
+    }
+    return reversed;
+}
+
+bool compareString(string text1, string text2) {
+    if (text1.length() != text2.length())
+        return false;
+
+    for (int i = 0; i < text1.length(); i++) {
+        if (text1[i] != text2[i])
+            return false;
+    }
+    return true;
+}
+
+int main() {
+    string text;
+    cout << "Enter an string : ";
+    getline(cin, text); // handles input with spaces
+
+    string reversedtext = reverseString(text);
+    cout << "Reverse entered string : " << reversedtext << endl;
+
+    if (compareString(text, reversedtext)) {
+        cout << "The entered string is a palindrome!" << endl;
+    } else {
+        cout << "The entered string is NOT a palindrome!" << endl;
+    }
+
+    return 0;
+}
+
+
+
+// ========================= PART B – QUESTION 3 ==========================
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+int yearInputValidation(int year) {
+    while (year <= 0) {
+        cout << "Invalid year. Please enter a valid positive year: ";
+        cin >> year;
+    }
+    return year;
+}
+
+int monthInputValidation(int month) {
+    while (month < 1 || month > 12) {
+        cout << "Invalid month. Please enter a month (1-12): ";
+        cin >> month;
+    }
+    return month;
+}
+
+int findDaysInMonth(int month, int year) {
+    switch (month) {
+        case 2: return isLeapYear(year) ? 29 : 28;
+        case 4: case 6: case 9: case 11: return 30;
+        default: return 31;
+    }
+}
+
+string getMonthName(int month) {
+    string months[] = { "", "January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December" };
+    return months[month];
+}
+
+// Zeller's Congruence Algorithm to get the starting day (0 = Sunday)
+int getStartDay(int month, int year) {
+    if (month < 3) {
+        month += 12;
+        year--;
+    }
+    int q = 1;
+    int m = month;
+    int k = year % 100;
+    int j = year / 100;
+
+    int h = (q + 13*(m + 1)/5 + k + k/4 + j/4 + 5*j) % 7;
+    return (h + 6) % 7; // convert to 0 = Sunday
+}
+
+void displayCalendar(int month, int year, int days) {
+    cout << "\nCalendar Title : " << getMonthName(month) << " - " << year << "\n" << endl;
+    cout << "Sunday  Monday  Tuesday  Wednesday  Thursday  Friday  Saturday" << endl;
+
+    int startDay = getStartDay(month, year);
+    for (int i = 0; i < startDay; i++) {
+        cout << "        ";
+    }
+
+    for (int day = 1; day <= days; day++) {
+        cout << setw(6) << day << "  ";
+        if ((startDay + day) % 7 == 0)
+            cout << endl;
+    }
+
+    cout << endl;
+}
+
+int main() {
+    int year, month, days, again;
+
+    do {
+        // Step 1: input with validation
+        cout << "Enter calendar's year: ";
+        cin >> year;
+        year = yearInputValidation(year);
+
+        cout << "Enter calendar's month: ";
+        cin >> month;
+        month = monthInputValidation(month);
+
+        // Step 2: process
+        days = findDaysInMonth(month, year);
+
+        // Step 3: output
+        displayCalendar(month, year, days);
+
+        cout << "\nDo you want to see another month? 1 = Yes, others = No: ";
+        cin >> again;
+
+    } while (again == 1);
+
+    return 0;
+}
+
+

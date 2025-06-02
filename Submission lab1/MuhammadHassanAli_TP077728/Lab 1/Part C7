@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int w1, h1, w2, h2, area1, area2;
+
+    cout << "Rectangle A:" << endl;
+    cout << "Width = ";
+    cin >> w1;
+    cout << "Height = ";
+    cin >> h1;
+
+    cout << "\nRectangle B:" << endl;
+    cout << "Width = ";
+    cin >> w2;
+    cout << "Height = ";
+    cin >> h2;
+
+    area1 = w1 * h1;
+    area2 = w2 * h2;
+
+    if (area1 > area2)
+        cout << "\nArea in rectangle A is bigger than rectangle B." << endl;
+    else if (area2 > area1)
+        cout << "\nArea in rectangle B is bigger than rectangle A." << endl;
+    else
+        cout << "\nBoth rectangles have the same area." << endl;
+
+    return 0;
+}

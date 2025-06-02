@@ -1,0 +1,59 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+// Function to check leap year
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+// Function to get number of days in a month
+int getDaysInMonth(int month, int year) {
+    switch (month) {
+        case 2: return isLeapYear(year) ? 29 : 28;
+        case 4: case 6: case 9: case 11: return 30;
+        default: return 31;
+    }
+}
+
+// Function to calculate starting day using Zeller's Congruence
+int getStartDay(int month, int year) {
+    if (month < 3) {
+        month += 12;
+        year--;
+    }
+    int k = year % 100;
+    int j = year / 100;
+    int h = (1 + 13*(month + 1)/5 + k + k/4 + j/4 + 5*j) % 7;
+    return (h + 6) % 7; // Adjust for Sunday = 0
+}
+
+int main() {
+    int year, month, again;
+    string months[] = {"", "January", "February", "March", "April", "May", "June",
+                       "July", "August", "September", "October", "November", "December"};
+
+    do {
+        cout << "Enter calendar's year: ";
+        cin >> year;
+        cout << "Enter calendar's month: ";
+        cin >> month;
+
+        int days = getDaysInMonth(month, year);
+        int start = getStartDay(month, year);
+
+        cout << "\nCalendar Title : " << months[month] << " - " << year << "\n" << endl;
+        cout << "Sunday  Monday  Tuesday  Wednesday  Thursday  Friday  Saturday" << endl;
+
+        for (int i = 0; i < start; i++) cout << "        ";
+
+        for (int day = 1; day <= days; day++) {
+            cout << setw(6) << day << "  ";
+            if ((start + day) % 7 == 0) cout << endl;
+        }
+        cout << endl << "\nDo you want to see other month? 1 = Yes, others = No: ";
+        cin >> again;
+    } while (again == 1);
+
+    return 0;
+}

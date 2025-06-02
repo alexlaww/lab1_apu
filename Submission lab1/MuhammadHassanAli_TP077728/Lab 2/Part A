@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+// 1. Function without return & without parameters
+void add1() {
+    int a, b;
+    cout << "\n[Function 1] Enter two integers: ";
+    cin >> a >> b;
+    int sum = a + b;
+    cout << "Sum = " << sum << endl;
+}
+
+// 2. Function without return & with parameters
+void add2(int a, int b) {
+    int sum = a + b;
+    cout << "[Function 2] Sum = " << sum << endl;
+}
+
+// 3. Function with return & with parameters
+int add3(int a, int b) {
+    return a + b;
+}
+
+// 4. Function with return & without parameters
+int add4() {
+    int a, b;
+    cout << "\n[Function 4] Enter two integers: ";
+    cin >> a >> b;
+    return a + b;
+}
+
+int main() {
+    int x, y;
+
+    // Call Function 1
+    add1();
+
+    // Call Function 2
+    cout << "\n[Function 2] Enter two integers: ";
+    cin >> x >> y;
+    add2(x, y);
+
+    // Call Function 3
+    cout << "\n[Function 3] Enter two integers: ";
+    cin >> x >> y;
+    int sum3 = add3(x, y);
+    cout << "[Function 3] Sum = " << sum3 << endl;
+
+    // Call Function 45
+    int sum4 = add4();
+    cout << "[Function 4] Sum = " << sum4 << endl;
+
+    return 0;
+}

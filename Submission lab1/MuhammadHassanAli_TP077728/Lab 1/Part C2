@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int totalDays, hot = 0, rainy = 0, cloudy = 0;
+    char forecast;
+
+    cout << "Enter number of days this month: ";
+    cin >> totalDays;
+
+    for (int day = 1; day <= totalDays; day++) {
+        cout << "Day " << day << " : Enter 'H' for Hot, 'R' for Rainy, 'C' for Cloudy (or 'E' to end): ";
+        cin >> forecast;
+
+        switch (tolower(forecast)) {
+            case 'h': hot++; break;
+            case 'r': rainy++; break;
+            case 'c': cloudy++; break;
+            case 'e': 
+                day = totalDays + 1; // end input early
+                break;
+            default:
+                cout << "Invalid input. Try again." << endl;
+                day--; // repeat same day
+        }
+    }
+
+    cout << "\nNumber of hot days this month: " << hot << endl;
+    cout << "Number of rainy days this month: " << rainy << endl;
+    cout << "Number of cloudy days this month: " << cloudy << endl;
+
+    return 0;
+}
